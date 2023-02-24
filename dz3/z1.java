@@ -12,16 +12,9 @@ public class z1 {
         return join(split(fir), split(sec));
     }
     private static int[] join(int[] fir, int[] sec) {
-        int i = 0, j = 0, k = 0;
         int[] res = new int[fir.length + sec.length];
-        while (j < fir.length && k < sec.length)
-            if (fir[j] < sec[k])
-                res[i++] = fir[j++];
-            else res[i++] = sec[k++];
-        while (i < res.length)
-            if (j != fir.length)
-                res[i++] = fir[j++];
-            else res[i++] = sec[k++];
-        return res;
+        for (int k = 0, i = 0, j = 0; k < res.length; k++)
+            res[k] = i < fir.length && (j == sec.length || fir[i] < sec[j]) ? fir[i++] : sec[j++];
+        return res; 
     }
 }
